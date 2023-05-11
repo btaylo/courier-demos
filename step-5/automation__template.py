@@ -17,29 +17,29 @@ def schedule_notification(interval, s):
 def send_notification():
   print("Execute automation: ", time.time())
 
-  client = Courier(auth_token="pk_prod_N671XW6PREMS0EMX67XMTPWAYTQW")
+  client = Courier(auth_token="API KEY GOES HERE")  # Replace with production API key
 
   # Automation to send one notification, with a delay, and then another
   resp = client.automations.invoke(
     automation={
       'steps': [
         {
-          'action': 'send',
-           "template": "QJAQ20TN9TM90QNRWNE7TN1NHF8J" # Replace with your 1st actual notification ID
+          "action": "send",
+          "template": "QJAQ20TN9TM90QNRWNE7TN1NHF8J" # Replace with your 1st actual notification ID
         },
         {
           "action": "delay",
           "duration": "1 minutes"
         },
         {
-          'action': 'send',
+          "action": "send",
           "template": "X0G40J35NP4MS0GRWD67Q0CTBJA0" # Replace with your 2nd actual notification ID
         },
       ],
     },
     recipient="SAMPLE_RECIPIENT_ID", # Unique identifier of the recipient (optional to change, but line must be there in the request)
     profile={
-      "email": "brandon@wizardondemand.com" # Replace with the email address of the recipient
+      "email": "someone@example.com" # Replace with the email address of the recipient
     },
   )
 
